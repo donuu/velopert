@@ -7,6 +7,20 @@ import RandomNumber from './RandomNumber'
 */
 class App extends Component {
 
+  constructor(){
+    super();
+    this.state = {
+      value : '__'
+    }
+    this.updateValue = this.updateValue.bind(this);
+  }
+
+  updateValue(randomValue){
+    this.setState({
+      value : randomValue
+    });
+  }
+
   render(){
     return (
       <div>
@@ -15,8 +29,10 @@ class App extends Component {
           title={this.props.contentTitle}
           body={this.props.contentBody}
         />
-        <RandomNumber />
-
+        <RandomNumber
+          number={this.state.value}
+          onUpdate={this.updateValue}
+        />
       </div>
     );
   }
